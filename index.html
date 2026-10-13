@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Gabriel Javier — Computer Engineering Student</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #08090d;
+        }
+
+        .nav-item {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #52525b;
+            font-size: 1.125rem;
+            font-weight: 600;
+            opacity: 0.5;
+        }
+        
+        .nav-item.active {
+            color: #ffffff !important;
+            font-size: 1.875rem !important;
+            font-weight: 800 !important;
+            opacity: 1 !important;
+            transform: translateX(-4px);
+        }
+
+        @keyframes marquee-horizontal {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-x {
+            display: flex;
+            width: max-content;
+            animation: marquee-horizontal 28s linear infinite;
+        }
+        .animate-marquee-x:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee-projects {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-projects {
+            display: flex;
+            width: max-content;
+            animation: marquee-projects 20s linear infinite;
+        }
+        .animate-marquee-projects:hover {
+            animation-play-state: paused;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="bg-[#08090d] text-zinc-200 font-sans antialiased min-h-screen relative selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+    <div class="fixed top-6 left-6 z-50 flex items-center gap-3 bg-zinc-900/90 backdrop-blur-md border border-zinc-800/80 px-4 py-2 rounded-full text-xs font-medium shadow-2xl text-zinc-400">
+        <span class="text-zinc-500 font-mono tracking-wider uppercase text-[10px]">FIND ME ON</span>
+        <div class="h-3 w-[1px] bg-zinc-800"></div>
+        <div class="flex items-center gap-3 text-zinc-300">
+            <a href="https://www.facebook.com/gabriel.javier.11/" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors p-1 hover:scale-110 duration-200 flex items-center justify-center" title="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gavierirz/?hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors p-1 hover:scale-110 duration-200 flex items-center justify-center" title="Instagram">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://github.com/johngabrieljavierpogi-web" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors p-1 hover:scale-110 duration-200 flex items-center justify-center" title="GitHub">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/john-gabriel-javier-a20a09375/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors p-1 hover:scale-110 duration-200 flex items-center justify-center" title="LinkedIn">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 bg-zinc-900/90 backdrop-blur-md border border-zinc-800/80 px-3.5 py-1.5 rounded-full text-xs text-zinc-300 font-mono">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Cavite, PH &bull; GMT+8</span>
+        </div>
+        <button onclick="downloadResume()" class="inline-flex items-center justify-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all shadow-lg hover:scale-105 active:scale-95 duration-300">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>CV</span>
+        </button>
+    </div>
+
+    <nav class="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-end space-y-5 text-right select-none">
+        <a href="#home" data-section="home" class="nav-item active">Home</a>
+        <a href="#about" data-section="about" class="nav-item">About</a>
+        <a href="#education" data-section="education" class="nav-item">Education</a>
+        <a href="#projects" data-section="projects" class="nav-item">Projects</a>
+        <a href="#experience" data-section="experience" class="nav-item">Experience</a>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 sm:px-12 xl:pr-56 pt-24 pb-32 space-y-36">
+
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center pt-8 scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 flex justify-center lg:justify-start">
+                    <div class="relative group">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-emerald-600/20 border-2 border-emerald-500/40 p-2 overflow-hidden shadow-2xl flex items-center justify-center transition-transform duration-500 hover:scale-105">
+                            <img 
+                                src="profile.jpg" 
+                                alt="John Gabriel Javier" 
+                                class="w-full h-full rounded-full object-cover"
+                                onerror="this.onerror=null; this.src="profile.jpg"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Computer Engineering Student
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-none">
+                        John Gabriel Javier
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-zinc-300 font-normal leading-relaxed max-w-2xl">
+                        Computer Engineering student engineering robust system solutions, low-level hardware integration, and software applications.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#projects" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-zinc-950 font-medium text-sm hover:bg-zinc-200 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95">
+                            View Projects
+                        </a>
+                        <button onclick="downloadResume()" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 font-medium text-sm hover:bg-emerald-500/20 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                            View CV 
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-8 border-t border-zinc-800/40">
+                <p class="text-xs font-mono tracking-widest text-zinc-500 uppercase mb-6">MY SKILLS</p>
+                <div class="relative w-full overflow-hidden">
+                    <div class="animate-marquee-x py-2">
+                        <div class="flex items-center gap-12 pr-12 text-zinc-400 font-mono text-xs uppercase tracking-wider">
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="code-2" class="w-7 h-7"></i>
+                                <span>C / C++</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="terminal" class="w-7 h-7"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="globe" class="w-7 h-7"></i>
+                                <span>HTML</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="file-code" class="w-7 h-7"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="layout" class="w-7 h-7"></i>
+                                <span>Tailwind CSS</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="sparkles" class="w-7 h-7"></i>
+                                <span>Lucide Icons</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-12 pr-12 text-zinc-400 font-mono text-xs uppercase tracking-wider">
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="code-2" class="w-7 h-7"></i>
+                                <span>C / C++</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="terminal" class="w-7 h-7"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="globe" class="w-7 h-7"></i>
+                                <span>HTML</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="file-code" class="w-7 h-7"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="layout" class="w-7 h-7"></i>
+                                <span>Tailwind CSS</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer hover:text-emerald-400 transition">
+                                <i data-lucide="sparkles" class="w-7 h-7"></i>
+                                <span>Lucide Icons</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="space-y-6 pt-12 border-t border-zinc-800/40 scroll-mt-24">
+            <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">ABOUT ME</span>
+            <h2 class="text-3xl font-bold text-white tracking-tight">Biography & Background</h2>
+            <div class="text-zinc-300 leading-relaxed text-lg space-y-4 max-w-3xl">
+                <p>
+                    I am a dedicated Computer Engineering student at the <strong>Polytechnic University of the Philippines</strong>, focusing on the intersection of low-level hardware design and modern software engineering.
+                </p>
+                <p>
+                    My technical repertoire spans C/C++, Python, system troubleshooting, hardware maintenance, and high-performance software development.
+                </p>
+            </div>
+        </section>
+
+        <section id="education" class="space-y-6 pt-12 border-t border-zinc-800/40 scroll-mt-24">
+            <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">EDUCATION</span>
+            <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-8 space-y-4 hover:border-zinc-700 transition">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <h3 class="text-2xl font-bold text-white">Polytechnic University of the Philippines</h3>
+                    <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 w-fit">2025 — PRESENT</span>
+                </div>
+                <p class="text-zinc-400 font-medium">Bachelor of Science in Computer Engineering</p>
+                <p class="text-xs font-mono text-zinc-500">Sta. Mesa, Manila, Philippines</p>
+                <div class="pt-4 flex items-center gap-4">
+                    <button onclick="downloadResume()" class="inline-flex items-center justify-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 font-semibold transition hover:scale-105 duration-300">
+                        <span>&rarr; VIEW RESUME</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-8 pt-12 border-t border-zinc-800/40 scroll-mt-24">
+            <div>
+                <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">PROJECTS</span>
+                <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Featured School Projects</h2>
+                <p class="text-zinc-400 text-sm mt-1">Click on any project card's <strong>"Live Demo"</strong> button to test the application live.</p>
+            </div>
+
+            <div class="relative w-full overflow-hidden py-4 mb-4">
+                <div class="animate-marquee-projects flex gap-4 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-emerald-400">Interactive GUIs</span>
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Python Algorithms</span>
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-emerald-400">Data Structures</span>
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Geometry & Math</span>
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-emerald-400">Interactive GUIs</span>
+                    <span class="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Python Algorithms</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 hover:scale-[1.02]">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">PYTHON ALGORITHM</span>
+                            <span class="text-xs font-mono text-zinc-500">Math / Geometry</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Circle Properties Calculator</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Calculates radius, area, and circumference instantly based on user-entered values with interactive geometric visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Tkinter/Web UI</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Math</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white transition gap-1.5">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <button onclick="openModal('circle')" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs font-mono transition duration-300 hover:scale-105 gap-1.5 shadow-lg">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Live Demo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 hover:scale-[1.02]">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">PYTHON ALGORITHM</span>
+                            <span class="text-xs font-mono text-zinc-500">Trigonometry</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Triangle Calculator</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Computes exact triangle area, perimeter, and side dimensions with clear numerical breakdowns.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Geometry</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white transition gap-1.5">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <button onclick="openModal('triangle')" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs font-mono transition duration-300 hover:scale-105 gap-1.5 shadow-lg">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Live Demo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 hover:scale-[1.02]">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">PYTHON UTILITY</span>
+                            <span class="text-xs font-mono text-zinc-500">String Manipulation</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Lowercase to Uppercase Converter</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Converts any lowercase or mixed-case string input into capitalized uppercase text.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Strings</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white transition gap-1.5">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <button onclick="openModal('textconvert')" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs font-mono transition duration-300 hover:scale-105 gap-1.5 shadow-lg">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Live Demo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 hover:scale-[1.02]">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">DATA STRUCTURE</span>
+                            <span class="text-xs font-mono text-zinc-500">LIFO Model</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Stack Data Structure Simulator</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Simulates stack operations including push, pop, and peek.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white transition gap-1.5">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <button onclick="openModal('stack')" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs font-mono transition duration-300 hover:scale-105 gap-1.5 shadow-lg">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Live Demo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 hover:scale-[1.02] md:col-span-2">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">DATA STRUCTURE</span>
+                            <span class="text-xs font-mono text-zinc-500">Pointers & Nodes</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Singly Linked List Simulator</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Interactive visualizer for node insertion, deletion, and traversal across a dynamic memory chain.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 font-mono text-[11px]">Pointers</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white transition gap-1.5">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <button onclick="openModal('linkedlist')" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs font-mono transition duration-300 hover:scale-105 gap-1.5 shadow-lg">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Live Demo
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="experience" class="space-y-10 pt-12 border-t border-zinc-800/40 scroll-mt-24">
+            <div>
+                <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">EXPERIENCES</span>
+                <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Journey</h2>
+            </div>
+
+            <div class="relative border-l border-zinc-800/80 pl-8 ml-3 space-y-12">
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Software & Web Projects</h3>
+                            <span class="text-xs font-mono text-zinc-500">2025 — PRESENT</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Developer</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Formulated and wrote code for academic assignments and personal projects, focusing on core programming concepts and logic design.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Computer Engineering Student</h3>
+                            <span class="text-xs font-mono text-zinc-500">2025 — PRESENT</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Polytechnic University of the Philippines</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Studying microprocessors, logic circuits, computer architecture, and object-oriented software development.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Division Youth Research Conference Competitor</h3>
+                            <span class="text-xs font-mono text-zinc-500">2025</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Researcher</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Competed in the Division Youth Research Conference, presenting research work and projects.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">DALI Everyday Grocery</h3>
+                            <span class="text-xs font-mono text-zinc-500">2025</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Operations Support</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Handled cross-functional daily operations, including cash register checkout, customer assistance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">SMAW Practical Trainee</h3>
+                            <span class="text-xs font-mono text-zinc-500">2023 — 2024</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Technical Trainee</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Completed specialized SMAW coursework, mastering core arc welding techniques, metal joint preparation, and electrode selection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Freelancer Editor</h3>
+                            <span class="text-xs font-mono text-zinc-500">2020 — 2021</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Digital Content Creator</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Edited and assembled digital media content for diverse clients, ensuring high visual quality and adherence to project guidelines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <span class="absolute -left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-zinc-950 group-hover:scale-125 transition-all"></span>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                            <h3 class="text-xl font-bold text-white">Vocational School</h3>
+                            <span class="text-xs font-mono text-zinc-500">2019</span>
+                        </div>
+                        <p class="text-xs font-mono text-emerald-400">Data Com Institute</p>
+                        <p class="text-sm text-zinc-300 leading-relaxed max-w-2xl">
+                            Completed foundational academic and technical training programs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="space-y-8 pt-12 border-t border-zinc-800/40 text-center scroll-mt-24">
+            <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">GET IN TOUCH</span>
+            
+            <h2 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
+                Let's build something together
+            </h2>
+            
+            <p class="text-zinc-400 text-sm sm:text-base max-w-md mx-auto">
+                Do you have a project in mind or an open opportunity? My inbox is always open.
+            </p>
+
+            <div class="pt-4 flex flex-col items-center justify-center gap-6">
+                <button onclick="copyEmail()" class="group inline-flex items-center justify-center gap-3 bg-zinc-900/90 border border-zinc-800 hover:border-emerald-500/50 px-6 py-3.5 rounded-full text-sm font-mono text-zinc-200 hover:text-white transition-all duration-300 shadow-xl hover:scale-105 active:scale-95">
+                    <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+                    <span id="emailText">javierjohngabriel1211@gmail.com</span>
+                    <i data-lucide="copy" class="w-3.5 h-3.5 text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
+                </button>
+
+                <div class="flex items-center gap-3 text-zinc-400">
+                    <a href="https://www.facebook.com/gabriel.javier.11/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:text-emerald-400 transition hover:scale-110 duration-200 flex items-center justify-center" title="Facebook">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/gavierirz/?hl=en" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:text-emerald-400 transition hover:scale-110 duration-200 flex items-center justify-center" title="Instagram">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:text-emerald-400 transition hover:scale-110 duration-200 flex items-center justify-center" title="GitHub">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/john-gabriel-javier-a20a09375/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:text-emerald-400 transition hover:scale-110 duration-200 flex items-center justify-center" title="LinkedIn">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="demo-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl relative">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-zinc-950/60">
+                <span id="modal-title" class="font-mono text-sm text-emerald-400 font-bold uppercase">Live Simulator</span>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <div id="modal-circle" class="modal-panel space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Circle Calculator Simulator</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-mono text-zinc-400 block mb-2">RADIUS (r):</label>
+                            <input type="number" id="modal-circle-radius" value="5" oninput="calcModalCircle()" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white font-mono focus:border-emerald-500 outline-none">
+                        </div>
+                        <div class="bg-zinc-950/80 border border-zinc-800/80 rounded-xl p-4 space-y-2 font-mono text-sm">
+                            <div class="text-emerald-400">-> Area: <span id="modal-res-circle-area">—</span></div>
+                            <div class="text-zinc-300">-> Circumference: <span id="modal-res-circle-circ">—</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-triangle" class="modal-panel space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Triangle Calculator Simulator</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-mono text-zinc-400 block mb-2">BASE (b):</label>
+                            <input type="number" id="modal-tri-base" value="10" oninput="calcModalTriangle()" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white font-mono focus:border-emerald-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="text-xs font-mono text-zinc-400 block mb-2">HEIGHT (h):</label>
+                            <input type="number" id="modal-tri-height" value="8" oninput="calcModalTriangle()" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white font-mono focus:border-emerald-500 outline-none">
+                        </div>
+                        <div class="bg-zinc-950/80 border border-zinc-800/80 rounded-xl p-4 space-y-2 font-mono text-sm">
+                            <div class="text-emerald-400">-> Area: <span id="modal-res-tri-area">—</span></div>
+                            <div class="text-zinc-300">-> Est. Perimeter: <span id="modal-res-tri-perm">—</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-textconvert" class="modal-panel space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Lowercase to Uppercase Converter</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-mono text-zinc-400 block mb-2">ENTER TEXT:</label>
+                            <input type="text" id="modal-text-input" placeholder="e.g. john gabriel javier" oninput="convertModalText()" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white font-mono focus:border-emerald-500 outline-none">
+                        </div>
+                        <div class="bg-zinc-950/80 border border-zinc-800/80 rounded-xl p-4 space-y-2 font-mono">
+                            <span class="text-xs text-zinc-500 uppercase tracking-wider block">Uppercase Output:</span>
+                            <div id="modal-res-uppercase" class="text-emerald-400 text-lg font-bold">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-stack" class="modal-panel space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Stack Data Structure Simulator (LIFO)</h3>
+                    <div class="flex gap-2">
+                        <input type="text" id="modal-stack-input" placeholder="Value..." class="bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-white font-mono text-sm focus:border-emerald-500 outline-none flex-1">
+                        <button onclick="modalStackPush()" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs font-mono hover:bg-emerald-400 transition hover:scale-105 duration-300">Push</button>
+                        <button onclick="modalStackPop()" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-zinc-800 text-zinc-200 font-bold text-xs font-mono hover:bg-zinc-700 transition hover:scale-105 duration-300">Pop</button>
+                    </div>
+                    <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 min-h-[150px] flex flex-col justify-end items-center space-y-2 overflow-hidden" id="modal-stack-container">
+                        <span class="text-xs font-mono text-zinc-600">Stack is currently empty</span>
+                    </div>
+                </div>
+
+                <div id="modal-linkedlist" class="modal-panel space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Singly Linked List Simulator</h3>
+                    <div class="flex gap-2">
+                        <input type="text" id="modal-ll-input" placeholder="Node value..." class="bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2 text-white font-mono text-sm focus:border-emerald-500 outline-none flex-1">
+                        <button onclick="modalLlInsertEnd()" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs font-mono hover:bg-emerald-400 transition hover:scale-105 duration-300">Insert End</button>
+                        <button onclick="modalLlDelete()" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-zinc-800 text-zinc-200 font-bold text-xs font-mono hover:bg-zinc-700 transition hover:scale-105 duration-300">Delete</button>
+                    </div>
+                    <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 overflow-x-auto flex items-center space-x-3 min-h-[100px]" id="modal-ll-container">
+                        <span class="text-xs font-mono text-zinc-600">HEAD -> None</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-emerald-500 text-zinc-950 font-mono text-xs px-4 py-2 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2">
+        Copied email to clipboard!
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        function updateActiveNav() {
+            let current = 'home';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+
+        function openModal(projectId) {
+            document.querySelectorAll('.modal-panel').forEach(p => p.classList.add('hidden'));
+            document.getElementById('modal-' + projectId).classList.remove('hidden');
+            document.getElementById('demo-modal').classList.remove('hidden');
+            document.getElementById('modal-title').innerText = projectId.toUpperCase() + " // LIVE DEMO";
+        }
+        function closeModal() {
+            document.getElementById('demo-modal').classList.add('hidden');
+        }
+
+        function calcModalCircle() {
+            const r = parseFloat(document.getElementById('modal-circle-radius').value) || 0;
+            const area = Math.PI * (r ** 2);
+            const circ = 2 * Math.PI * r;
+            document.getElementById('modal-res-circle-area').innerText = area.toFixed(2);
+            document.getElementById('modal-res-circle-circ').innerText = circ.toFixed(2);
+        }
+        calcModalCircle();
+
+        function calcModalTriangle() {
+            const b = parseFloat(document.getElementById('modal-tri-base').value) || 0;
+            const h = parseFloat(document.getElementById('modal-tri-height').value) || 0;
+            const area = 0.5 * b * h;
+            const hypotenuse = Math.sqrt((b/2)**2 + h**2);
+            const perimeter = b + (2 * hypotenuse);
+            document.getElementById('modal-res-tri-area').innerText = area.toFixed(2);
+            document.getElementById('modal-res-tri-perm').innerText = perimeter.toFixed(2);
+        }
+        calcModalTriangle();
+
+        function convertModalText() {
+            const val = document.getElementById('modal-text-input').value;
+            const upper = val.toUpperCase();
+            document.getElementById('modal-res-uppercase').innerText = upper ? upper : '—';
+        }
+        convertModalText();
+
+        let modalStackArr = [];
+        function modalStackPush() {
+            const val = document.getElementById('modal-stack-input').value.trim();
+            if(!val) return;
+            modalStackArr.push(val);
+            document.getElementById('modal-stack-input').value = '';
+            renderModalStack();
+        }
+        function modalStackPop() {
+            modalStackArr.pop();
+            renderModalStack();
+        }
+        function renderModalStack() {
+            const container = document.getElementById('modal-stack-container');
+            if(modalStackArr.length === 0) {
+                container.innerHTML = '<span class="text-xs font-mono text-zinc-600">Stack is currently empty</span>';
+                return;
+            }
+            container.innerHTML = '';
+            [...modalStackArr].reverse().forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = "w-40 py-1.5 bg-zinc-900 border border-emerald-500/40 rounded-lg text-center font-mono text-xs text-emerald-300 shadow flex justify-between px-3 items-center";
+                div.innerHTML = `<span>${item}</span><span class="text-[9px] text-zinc-500">${idx === 0 ? 'TOP' : ''}</span>`;
+                container.appendChild(div);
+            });
+        }
+
+        let modalLlHead = null;
+        class LLNode { constructor(val) { this.val = val; this.next = null; } }
+        function modalLlInsertEnd() {
+            const val = document.getElementById('modal-ll-input').value.trim();
+            if(!val) return;
+            const newNode = new LLNode(val);
+            if(!modalLlHead) {
+                modalLlHead = newNode;
+            } else {
+                let curr = modalLlHead;
+                while(curr.next) curr = curr.next;
+                curr.next = newNode;
+            }
+            document.getElementById('modal-ll-input').value = '';
+            renderModalLL();
+        }
+        function modalLlDelete() {
+            if(!modalLlHead) return;
+            modalLlHead = modalLlHead.next;
+            renderModalLL();
+        }
+        function renderModalLL() {
+            const container = document.getElementById('modal-ll-container');
+            container.innerHTML = '<span class="text-xs font-mono text-emerald-400 font-bold mr-2">HEAD</span>';
+            if(!modalLlHead) {
+                container.innerHTML += '<span class="text-xs font-mono text-zinc-600">-> None</span>';
+                return;
+            }
+            let curr = modalLlHead;
+            while(curr) {
+                const nodeEl = document.createElement('div');
+                nodeEl.className = "px-3 py-1.5 bg-zinc-900 border border-emerald-500/50 rounded-lg font-mono text-xs text-emerald-300 flex items-center gap-2 shadow";
+                nodeEl.innerHTML = `<span>${curr.val}</span><span class="text-[9px] text-zinc-500 font-bold">&rarr;</span>`;
+                container.appendChild(nodeEl);
+                curr = curr.next;
+            }
+            const noneEl = document.createElement('span');
+            noneEl.className = "text-xs font-mono text-zinc-600";
+            noneEl.innerText = "None";
+            container.appendChild(noneEl);
+        }
+        renderModalLL();
+
+        function copyEmail() {
+            navigator.clipboard.writeText("javierjohngabriel1211@gmail.com");
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            }, 2500);
+        }
+
+        function downloadResume() {
+            window.open('resume.pdf', '_blank');
+        }
+    </script>
+</body>
+</html>
